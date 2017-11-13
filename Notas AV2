@@ -1,0 +1,7 @@
+-e file = verifica se o arquivo existe
+-d file = verifica se o arquivo é um diretório
+-f file = Verifica se é um arquivo regular
+-s file = verifica se o arquivo é de tamanho diferente de zero
+-r file = verifica se o arquivo é legível
+-w file = verifica se o arquivo pode ser gravado
+-x file = verifica se o arquivo é executável
