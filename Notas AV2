@@ -5,3 +5,43 @@
 -r file = verifica se o arquivo é legível
 -w file = verifica se o arquivo pode ser gravado
 -x file = verifica se o arquivo é executável
+
+Modelo Backup
+
+#!/bin/bash
+
+arq=$1
+
+linhasArq=$(wc -l < $arq)
+
+if [[ linhasArq -lt 100 ]]
+then
+	mv $arq PastaPequena
+	echo "Arquivo movido para PastaPequena "
+elif [[ linhasArq -gt 100 ]] && [[ linhasArq -lt 500 ]]
+then
+	mv $arq PastaMedia
+	echo "Arquivo movido para PastaMedia"
+else
+	mv $arq PastaGrande
+	echo "Arquivo movido para PastaGrande"
+fi
+
+Modelo Verifica arquivo, exclui se estiver vazio e não exclui se houver conteudo.
+
+#!/bin/bash
+file=$1
+if [ -f $file ]
+then
+	echo "Arquivo encontrado!"
+	if [ -s $file ]
+	then
+        echo -e "O arquivo não pode ser excluído pois contém informações"
+	else
+		echo -e "O arquivo $file está vazio e será excluido..."
+		rm $file
+		echo -e "O arquivo $file foi excluido!!!"
+	fi
+else
+	echo -e "O arquivo $file não existe"
+fi
